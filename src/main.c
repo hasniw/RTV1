@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 00:26:11 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/12 23:34:24 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/18 17:14:30 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ void	rtv(void)
 
 int		main(int argc, char **argv)
 {
-	(void)argv;
+	t_fmlx	ptr;
 	if (argc != 2)
 	{
 		ft_putstr_fd("usage: rtv1 <file>\n", 2);
 		return (1);
 	}
+	parser(&ptr, argv[1]);
 	rtv();
 	return (0);
 }
