@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 15:34:06 by wahasni           #+#    #+#             */
-/*   Updated: 2019/08/18 18:29:59 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/08/20 12:54:19 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,13 @@ static void	ft_assign_value(t_fmlx *rtv, char **tab, int value)
 
 static int	ft_check_line(char *str, int value)
 {
-	if (ft_strnequ(str, "\tpos(", 8))
-	{
-		value = 1;
+	if (ft_strnequ(str, "\tpos(", 5))
 		return (1);
-	}
-	else if (ft_strnequ(str, "\tdir(", 8))
-	{
-		value = 2;
-		return (1);
-	}
-	else if (value)
-		ft_error("Bad value camera3");
+	else if (ft_strnequ(str, "\tdir(", 5))
+		return (2);
+	(void)value;
+	// else if (value)
+	// 	ft_error("Bad value camera3");
 	// Check si des valeurs ont pas deja ete attribue a pos ou dir
 	// Check les derniers caracteres aussi
 	return (0);
@@ -71,14 +66,17 @@ void	ft_parse_camera(t_fmlx *rtv, int fd)
         if (i == 4)
 			if (!ft_strequ(line, "}"))
 				ft_error("Bad value camera2");
-		if (ft_check_line(line, whos))
-			split = ft_strsplit(&line[8], ',');
+		if ((whos = ft_check_line(line, whos)))
+			split = ft_strsplit(&line[5], ',');
+		printf("Before assign value\n");
+		printf("value : %d\n", whos);
 		ft_assign_value(rtv, split, whos);
 		// free_split(split); // Voir pq sa crash
 		i++;
 		if (i == 4)
 			break ;
+		printf("<----------------------------->\n");
 	}
 	printf("parse-camera finish !\n");
-	printf("x : %lf\n", rtv->cam.pos.x);
+	printf("x : %f\n", rtv->cam.pos.x);
 }
