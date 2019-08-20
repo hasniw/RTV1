@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 12:53:19 by wahasni           #+#    #+#             */
-/*   Updated: 2019/08/18 18:28:07 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/08/20 16:53:33 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,20 @@ void	parser(t_fmlx *rtv, char *file)
         if (ft_strequ(line, "camera"))
 			ft_parse_camera(rtv, fd);
 		// else if (!ft_strequ(line, "plane"))
-		// 	ft_parse_plane(rtv, fd);
+		// 	ft_parse_objs(rtv->obj, fd, RT_PLANE);
 		// else if (!ft_strequ(line, "sphere"))
-		// 	ft_parse_sphere(rtv, fd);
+		// 	ft_parse_objs(rtv->obj, fd, RT_SPHERE);
 		// else if (!ft_strequ(line, "cyl"))
-		// 	ft_parse_cyl(rtv, fd);
+		// 	ft_parse_objs(rtv->obj, fd, RT_CYL);
 		// else if (!ft_strequ(line, "cone"))
-		// 	ft_parse_cone(rtv, fd);
+		// 	ft_parse_objs(rtv->obj, fd, RT_CONE);
 		// else if (!ft_strequ(line, "light"))
-		// 	ft_parse_light(rtv, fd);
+		// 	ft_parse_objs(rtv->obj, fd, RT_LIGHT);
 		else if (line)
 			ft_error("Bad type.");
         ft_strdel(&line);
     }
 	close(fd);
 }
+
+// Pour mon atod return -1 si c'est pas un double

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 18:44:21 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/11 01:08:48 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/20 15:19:15 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void			ft_striter(char *s, void (*f)(char*));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 void			ft_print_bits(long long unsigned int nbr);
 int				ft_sqrt(int nb);
+int				ft_count_word(char *str, char c);
 t_opts			get_options(int argc, char **argv, char *allowed);
 
 #endif

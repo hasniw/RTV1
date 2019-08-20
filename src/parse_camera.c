@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 15:34:06 by wahasni           #+#    #+#             */
-/*   Updated: 2019/08/20 12:54:19 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/08/20 18:45:30 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,33 @@ static void	ft_assign_value(t_fmlx *rtv, char **tab, int value)
 		rtv->cam.vecdir.y = atof(tab[1]);
 		rtv->cam.vecdir.z = atof(tab[2]);
 	}
+	if (value == 3)
+	{
+		rtv->cam.upvec.x = atof(tab[0]);
+		rtv->cam.upvec.y = atof(tab[1]);
+		rtv->cam.upvec.z = atof(tab[2]);
+	}
+	if (value == 4)
+	{
+		rtv->cam.rightvec.x = atof(tab[0]);
+		rtv->cam.rightvec.y = atof(tab[1]);
+		rtv->cam.rightvec.z = atof(tab[2]);
+	}
 }
 
 static int	ft_check_line(char *str, int value)
 {
+	//Check nombre de nombre/virgule
 	if (ft_strnequ(str, "\tpos(", 5))
 		return (1);
-	else if (ft_strnequ(str, "\tdir(", 5))
+	else if (ft_strnequ(str, "\tvec(", 5))
 		return (2);
+	else if (ft_strnequ(str, "\tupv(", 5))
+		return (3);
+	else if (ft_strnequ(str, "\trvec(", 5))
+		return (4);
 	(void)value;
+	// CHANGER LES NOMS
 	// else if (value)
 	// 	ft_error("Bad value camera3");
 	// Check si des valeurs ont pas deja ete attribue a pos ou dir
@@ -63,13 +81,11 @@ void	ft_parse_camera(t_fmlx *rtv, int fd)
 		if (i == 0)
 			if (!ft_strequ(line, "{"))
 				ft_error("Bad value camera1");
-        if (i == 4)
+        if (i == 4) // A gechan s'il y'a plus d'element dans la partie camera
 			if (!ft_strequ(line, "}"))
 				ft_error("Bad value camera2");
 		if ((whos = ft_check_line(line, whos)))
 			split = ft_strsplit(&line[5], ',');
-		printf("Before assign value\n");
-		printf("value : %d\n", whos);
 		ft_assign_value(rtv, split, whos);
 		// free_split(split); // Voir pq sa crash
 		i++;
