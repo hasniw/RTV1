@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtdata.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:19:54 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/17 06:21:45 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/21 18:23:07 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ typedef struct	s_light
 	t_vector	dir;
 }				t_light;
 
+typedef struct	s_camera
+{
+	t_vector	pos;
+	t_vector	vecdir;
+	t_vector	upvec;
+	t_vector	rightvec;
+}				t_camera;
+
 /*
 ** ============================================================================
 ** OBJECT LINKED LIST..........................................................
@@ -88,6 +96,7 @@ typedef struct	s_object
 		t_cylinder	cyl;
 		t_cone		cone;
 		t_light		light;
+		t_camera	cam;
 	}				u_fig;
 	struct s_object	*next;
 }				t_object;
@@ -127,11 +136,4 @@ typedef struct	s_ray
 	int			color;
 }				t_ray;
 
-typedef struct	s_camera
-{
-	t_vector	pos;
-	t_vector	vecdir;
-	t_vector	upvec;
-	t_vector	rightvec;
-}				t_camera;
 #endif

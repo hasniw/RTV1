@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 18:44:21 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/20 15:19:15 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/08/24 18:37:12 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strtrim(char const *s);
 int				tab_realloc(char ***tab);
 int				ft_atoi(const char *str);
+double			ft_atod(const char *str);
 int				how_many_lines(const int fd);
 int				ft_base_size(long long nb, int base);
 int				ft_isalnum(int c);

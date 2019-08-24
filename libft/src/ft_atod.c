@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atod.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/05 17:17:10 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/21 18:25:03 by wahasni          ###   ########.fr       */
+/*   Created: 2019/08/21 18:11:54 by wahasni           #+#    #+#             */
+/*   Updated: 2019/08/24 18:50:30 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(const char *str)
+#include "libft.h"
+#include <stdio.h>
+
+double	ft_atod(const char *str)
 {
 	int i;
-	int result;
 	int sign;
+	double result;
+	double power;
 
 	i = 0;
+	power = 1;
 	result = 0;
 	sign = 1;
 	while (str[i] && (str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
 				|| str[i] == '\v' || str[i] == ' ' || str[i] == '\f'))
 		i++;
-	if (str[i] && (str[i] == '+' || str[i] == '-') && str[i])
+	sign = (str[i] == '-') ? -1 : 1;
+	if (sign == -1 || str[i] == '+')
 		i++;
-	if (str[i] && i > 0 && str[i - 1] == '-')
-		sign = -1;
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+		result = 10.0 * result + (str[i++] - '0');
+	if (str[i] == '.')
+		i++;
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		if (result >= 214748364 && str[i] > '8' && sign == -1)
-			return (0);
-		result = result * 10 + (str[i] - '0');
-		i++;
+		result = 10.0 * result + (str[i++] - '0');
+		power *= 10.0;
 	}
-	return (result * sign);
+	return ((result / power) * sign);
 }

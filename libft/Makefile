@@ -6,7 +6,7 @@
 #    By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 22:00:41 by mpivet-p          #+#    #+#              #
-#    Updated: 2019/08/20 15:19:33 by wahasni          ###   ########.fr        #
+#    Updated: 2019/08/24 18:37:35 by wahasni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC_PATH= src/
 OBJ_PATH= obj/
 
 INC_NAME= libft.h get_next_line.h
-SRC_NAME = ft_atoi.c ft_base_size.c ft_bzero.c ft_isalnum.c \
+SRC_NAME = ft_atoi.c ft_atod.c ft_base_size.c ft_bzero.c ft_isalnum.c \
 	ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_lstadd.c \
 	ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstlen.c ft_lstmap.c ft_lstnew.c \
 	ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c \

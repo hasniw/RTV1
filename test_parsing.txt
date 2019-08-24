@@ -1,9 +1,11 @@
-camera
+camera: lolilol(vert)
 {
 	pos(0,0,-250)
 	dir(0,0,0)
+	upv(2,2,2)
+	rvec(1,1,1)
 }
-light
+light: popopo(red)
 {
 	col(250 250 250)
 	pos(-40 60 -20)

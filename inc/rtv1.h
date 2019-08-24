@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/18 17:56:18 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/08/21 18:30:02 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,18 @@ typedef struct	s_fmlx
 
 void			parser(t_fmlx *rtv, char *file);
 void			ft_error(char *error);
-void			ft_parse_camera(t_fmlx *rtv, int fd);
+void			ft_parse_camera(t_object *rtv, int fd);
 void			free_split(char **tab);
+void			ft_parse_objs(t_object *obj, int fd, int type);
+void			ft_assign_pos(t_object *obj, char *str);
+void			ft_assign_pos2(t_object *obj, char *str);
+void			ft_assign_dir(t_object *obj, char *str);
+void			ft_assign_dir2(t_object *obj, char *str);
+int				ft_check_cone(t_object *obj, char *str);
+int				ft_check_cyl(t_object *obj, char *str);
+int				ft_check_sphere(t_object *obj, char *str);
+
+
 
 /*
 ** ============================================================================

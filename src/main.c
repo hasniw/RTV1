@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 00:26:11 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/18 17:14:30 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/08/24 18:54:25 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,25 @@ void	rtv(void)
 int		main(int argc, char **argv)
 {
 	t_fmlx	ptr;
+
 	if (argc != 2)
 	{
 		ft_putstr_fd("usage: rtv1 <file>\n", 2);
 		return (1);
 	}
+	// TEST ATOD : 
+	printf("Double max : %lf", DBL_MAX);
+	printf("TEST ATOD\n");
+	char *str = "";
+	char *str2 = "    153.556";
+	char *str3 = "153.556.1";
+	char *str4 = "153";
+	char *str5 = "ab153";
+	printf("str : %lf\n", ft_atod(str));
+	printf("str2 : %lf\n", ft_atod(str2));
+	printf("str3 : %lf\n", ft_atod(str3));
+	printf("str4 : %lf\n", ft_atod(str4));
+	printf("str5 : %lf\n", ft_atod(str5));
 	parser(&ptr, argv[1]);
 	rtv();
 	return (0);
