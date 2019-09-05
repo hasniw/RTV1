@@ -1,0 +1,47 @@
+light: NAME
+{
+	color : WHITE
+	pos(1,4141441,-333)
+	dir(8,1223,0)
+}
+plane: NAME
+{
+	color : GREEN
+	pos(1,4141441,-333)
+	dir(8,1223,0)
+}
+sphere: NAME
+{
+	color : BLUE
+	pos(5,12,0)
+	radius(12233.26556)
+}
+cone: NAME
+{
+	color : PURPLE
+	pos(1,4141441,-333)
+	dir(8,1223,0)
+	radius(0)
+	height(0.85)
+}
+cylinder: NAME
+{
+	color : PURPLE
+	pos(1,4141441,-333)
+	dir(8,1223,0)
+	radius(0.5625)
+}
+cylinder: NAME
+{
+	color : PURPLE
+	pos(1,4141441,-333)
+	dir(8,1223,0)
+	radius(0.5625)
+}
+cylinder: NAME
+{
+	color : PURPLE
+	pos(1,4141441,-333)
+	dir(8,1223,0)
+	radius(0.5625)
+}
