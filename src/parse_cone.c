@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:50:22 by wahasni           #+#    #+#             */
-/*   Updated: 2019/08/31 03:22:31 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/05 04:30:56 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,31 @@ static int	ft_assign_what(t_object *obj, char *line, int i)
 	{
 		if (ft_strnequ(line, "\tpos(", 5))
 			ft_assign_pos2(obj, &line[5]);
-		return (0);
+		else
+			return (1);
 	}
 	else if (i == 1)
 	{
 		if (ft_strnequ(line, "\tdir(", 5))
 			ft_assign_dir2(obj, &line[5]);
-		return (0);
+		else
+			return (1);
 	}
 	else if (i == 2)
 	{
 		if (ft_strnequ(line, "\tradius(", 8))
-			obj->u_fig.cone.radius = atof(&line[8]);
-		return (0);
+			obj->u_fig.cone.radius = ft_atod(&line[8]);
+		else
+			return (1);
 	}
 	else if (i == 3)
 	{
 		if (ft_strnequ(line, "\theight(", 8))
-			obj->u_fig.cone.height = atof(&line[8]);
-		return (0);
+			obj->u_fig.cone.height = ft_atod(&line[8]);
+		else
+			return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int			ft_parse_cone(t_object *obj, int fd)
@@ -53,8 +57,10 @@ int			ft_parse_cone(t_object *obj, int fd)
 	while (i < 4 && get_next_line(fd, &line) > 0)
 	{
 		if (ft_count_word(line, ',') == 2 && ft_last_word(line) == ')')
+		{
 			if (ft_assign_what(obj, line, i))
 				free_line(line, 1);
+		}
 		ft_strdel(&line);
 		i++;
 	}

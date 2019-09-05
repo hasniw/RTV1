@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:10:34 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/05 02:01:05 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/05 04:44:29 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			parser(t_fmlx *rtv, char *file)
 			rtv->obj = ft_create_list();
 			obj = rtv->obj;
 		}
-		else
+		else // Je cree un maillon en trop
 		{
 			ft_list_add_last(&rtv->obj, ft_create_list());
 			while (obj->next)

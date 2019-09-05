@@ -1,6 +1,30 @@
 plane: NAME
 {
-	colors : GREEN
+	color : GREEN
+	pos(1,4141441,-333)
+	dir(8,1223,0)
+}
+plane: NAME
+{
+	color : GREEN
+	pos(1,4141441,-333)
+	dir(8,1223,0)
+}
+plane: NAME
+{
+	color : GREEN
+	pos(1,4141441,-333)
+	dir(8,1223,0)
+}
+plane: NAME
+{
+	color : GREEN
+	pos(1,4141441,-333)
+	dir(8,1223,0)
+}
+plane: NAME
+{
+	color : GREEN
 	pos(1,4141441,-333)
 	dir(8,1223,0)
 }

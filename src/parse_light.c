@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:50:17 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/01 01:06:16 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/05 04:04:55 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,15 @@ int	ft_parse_light(t_object *obj, int fd)
 			{
 				if (ft_strnequ(line, "\tpos(", 5))
 					ft_assign_pos(obj, &line[5]);
+				else
+					return (1);
 			}
 			else if (i == 1)
 			{
 				if (ft_strnequ(line, "\tdir(", 5))
 					ft_assign_dir(obj, &line[5]);
+				else
+					return (1);
 			}
 			else
 				free_line(line, 1);

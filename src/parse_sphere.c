@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:50:09 by wahasni           #+#    #+#             */
-/*   Updated: 2019/08/31 03:36:09 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/05 04:05:33 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,15 @@ int	ft_parse_sphere(t_object *obj, int fd)
 			{
 				if (ft_strnequ(line, "\tpos(", 5))
 					ft_assign_pos(obj, &line[5]);
+				else
+					return (1);
 			}
 			else if (i == 1)
 			{
 				if (ft_strnequ(line, "\tradius(", 8))
 					obj->u_fig.sphere.radius = atof(&line[8]);
+				else
+					return (1);
 			}
 			else
 				free_line(line, 1);

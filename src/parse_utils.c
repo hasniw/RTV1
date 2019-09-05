@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 23:32:33 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/05 01:22:42 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/05 04:14:22 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_print_data(t_object *bip)
 	printf("BEFORE : %d\n", obj->type);
 	while (obj)
 	{
-		printf("Maillon %d : color : %lf type : %d\n", i, obj->color, obj->type);
+		printf("Maillon %d : color : %lf pos[x] : %lf type : %d\n", i, obj->color, obj->u_fig.plane.pos.x, obj->type);
 		i++;
 		obj = obj->next;
 	}
