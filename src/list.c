@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 04:58:55 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/09/03 00:58:12 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/08 05:10:44 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "libft.h"
 #include <strings.h>
 #include <stdlib.h>
-//DELETE
-#include <stdio.h>
 
 t_object	*get_prevlink(t_fmlx *mlx)
 {
@@ -53,7 +51,7 @@ void		rt_delist(t_fmlx *mlx)
 
 void		ft_list_add_last(t_object **save, t_object *elem)
 {
-	t_object *list;
+	t_object	*list;
 
 	list = *save;
 	while (list->next)
@@ -61,7 +59,6 @@ void		ft_list_add_last(t_object **save, t_object *elem)
 	list->next = elem;
 	elem->prev = list;
 }
-
 
 t_object	*ft_create_list(void)
 {
@@ -72,4 +69,14 @@ t_object	*ft_create_list(void)
 	list->next = NULL;
 	list->prev = NULL;
 	return (list);
+}
+
+t_object	*ft_get_head_ref(t_object *obj)
+{
+	t_object	*head_ref;
+
+	head_ref = (t_object *)obj;
+	while (head_ref->prev)
+		head_ref = head_ref->prev;
+	return (head_ref);
 }

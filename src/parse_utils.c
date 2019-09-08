@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 23:32:33 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/05 04:14:22 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/08 03:08:36 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,6 @@ char	ft_last_word(char *str)
 	while (str[i + 1])
 		i++;
 	return (str[i]);
-}
-
-int		free_line(char *line, int i)
-{
-	ft_strdel(&line);
-	return (i);
 }
 
 int		ft_error(char *error)

@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/09/05 01:22:22 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/08 01:20:24 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ void			ft_assign_pos(t_object *obj, char *str);
 void			ft_assign_pos2(t_object *obj, char *str);
 int				ft_parse_name(t_object *obj,  char *line);
 void			free_split(char **tab);
+void			ft_delete_list(t_object** head_ref);
+int				free_last_node(t_object *head);
+t_object		*ft_get_head_ref(t_object *obj);
 void			ft_list_add_last(t_object **save, t_object *elem);
 t_object		*ft_create_list(void);
 void			ft_print_data(t_object *bip); // A supp

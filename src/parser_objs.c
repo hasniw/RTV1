@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:23:34 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/05 04:33:43 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/08 02:25:51 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		ft_parse_name(t_object *obj,  char *line)
 		ft_strcat(obj->name, &line[8]);
 	else if (obj->type == RT_LIGHT)
 		ft_strcat(obj->name, &line[7]);
-	printf("%d | nom de l'objet : %s\n", obj->type, obj->name);
 	return (0);
 }
 

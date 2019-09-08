@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 00:26:11 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/09/05 01:21:22 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/08 02:59:53 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,14 @@ int		main(int argc, char **argv)
 	printf("CYL : %d | CONE : %d | PLANE : %d | SPHERE : %d | LIGHT : %d | CAM : %d\n", RT_CYL, RT_CONE, RT_PLANE, RT_SPHERE, RT_LIGHT, RT_CAM);
 	printf("<------BEGIN PARSE------->\n");
 	if (parser(&ptr, argv[1]))
+	{
+		ft_delete_list(&ptr.obj);
 		return (1);
+	}
 	printf("<------PARSER FINI------->\n");
 	ft_print_data(ptr.obj);
-	exit (0);
+	ft_delete_list(&ptr.obj);
+	return (0);
 	rtv();
 	return (0);
 }
