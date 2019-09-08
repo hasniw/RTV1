@@ -6,17 +6,14 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:48:07 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/02 22:10:29 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/08 05:15:12 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include "rtdata.h"
 #include "libft.h"
-#include <string.h> // Le temps de coder atod
-#include <stdio.h> // Juste pour tester
 
-// Si la valeur est superieur au double -> 0 à la variable
 static void	ft_assign_cam(t_object *obj, char **tab, int value)
 {
 	if (value == 1)

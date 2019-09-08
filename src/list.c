@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 04:58:55 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/09/08 05:10:44 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/08 05:24:07 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include <strings.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 t_object	*get_prevlink(t_fmlx *mlx)
 {

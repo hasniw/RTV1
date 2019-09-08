@@ -6,14 +6,32 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:50:22 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/05 04:30:56 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/08 05:25:18 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include "rtdata.h"
 #include "libft.h"
-#include <stdio.h>
+
+static int	ft_assign_what2(t_object *obj, char *line, int i)
+{
+	if (i == 2)
+	{
+		if (ft_strnequ(line, "\tradius(", 8))
+			obj->u_fig.cone.radius = ft_atod(&line[8]);
+		else
+			return (1);
+	}
+	else if (i == 3)
+	{
+		if (ft_strnequ(line, "\theight(", 8))
+			obj->u_fig.cone.height = ft_atod(&line[8]);
+		else
+			return (1);
+	}
+	return (0);
+}
 
 static int	ft_assign_what(t_object *obj, char *line, int i)
 {
@@ -31,21 +49,7 @@ static int	ft_assign_what(t_object *obj, char *line, int i)
 		else
 			return (1);
 	}
-	else if (i == 2)
-	{
-		if (ft_strnequ(line, "\tradius(", 8))
-			obj->u_fig.cone.radius = ft_atod(&line[8]);
-		else
-			return (1);
-	}
-	else if (i == 3)
-	{
-		if (ft_strnequ(line, "\theight(", 8))
-			obj->u_fig.cone.height = ft_atod(&line[8]);
-		else
-			return (1);
-	}
-	return (0);
+	return (ft_assign_what2(obj, line, i));
 }
 
 int			ft_parse_cone(t_object *obj, int fd)
