@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:10:34 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/08 02:59:37 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/11 22:08:37 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,47 @@ static int	ft_check_node(t_object *chill) //Tcheck si au moins un objet a ete in
 	while (obj->next)
 	{
 		if (obj->type == RT_CYL || obj->type == RT_CONE
-		|| obj->type == RT_PLANE || obj->type == RT_SPHERE)
+				|| obj->type == RT_PLANE || obj->type == RT_SPHERE)
 			return (0);
 		obj = obj->next;
 	}
 	return (1);
 }
 
+static int	ft_handle_objs(t_object *obj, char *line, int fd)
+{
+	int error;
+
+	if (ft_strnequ(line, "plane: ", 7))
+		error = ft_parse_objs(obj, fd, RT_PLANE, line);
+	else if (ft_strnequ(line, "sphere: ", 8))
+		error = ft_parse_objs(obj, fd, RT_SPHERE, line);
+	else if (ft_strnequ(line, "cylinder: ", 10))
+		error = ft_parse_objs(obj, fd, RT_CYL, line);
+	else if (ft_strnequ(line, "cone: ", 6))
+		error = ft_parse_objs(obj, fd, RT_CONE, line);
+	else if (ft_strnequ(line, "light: ", 7))
+		error = ft_parse_objs(obj, fd, RT_LIGHT, line);
+	else if (ft_check_node(obj))
+	{
+		ft_strdel(&line);
+		return (ft_error("missing object"));
+	}
+	else
+		return (free_last_node(ft_get_head_ref(obj)));
+	if (error)
+	{
+		ft_strdel(&line);
+		return (ft_error("missing object"));
+	}
+	ft_strdel(&line);
+	return (2);
+}
+
 int			parser(t_fmlx *rtv, char *file)
 {
 	int			fd;
-	int			error;
+	int			x;
 	char		*line;
 	t_object	*obj;
 	int i;
@@ -56,30 +86,11 @@ int			parser(t_fmlx *rtv, char *file)
 			while (obj->next)
 				obj = obj->next;
 		}
-		if (ft_strnequ(line, "plane: ", 7))
-			error = ft_parse_objs(obj, fd, RT_PLANE, line);
-		else if (ft_strnequ(line, "sphere: ", 8))
-			error = ft_parse_objs(obj, fd, RT_SPHERE, line);
-		else if (ft_strnequ(line, "cylinder: ", 10))
-			error = ft_parse_objs(obj, fd, RT_CYL, line);
-		else if (ft_strnequ(line, "cone: ", 6))
-			error = ft_parse_objs(obj, fd, RT_CONE, line);
-		else if (ft_strnequ(line, "light: ", 7))
-			error = ft_parse_objs(obj, fd, RT_LIGHT, line);
-		else if (ft_check_node(obj))
-		{
-			ft_strdel(&line);
-			return (ft_error("missing object"));
-		}
-		else
-			return (free_last_node(ft_get_head_ref(obj)));
-		if (error)
-		{
-			ft_strdel(&line);
-			return (ft_error("missing object"));
-		}
-		// if (variable cree test erreur dans parse_objs)
-		ft_strdel(&line);
+		x = ft_handle_objs(obj, line, fd);
+		if (x == 0)
+			return (0);
+		else if (x == 1)
+			return (1);
 		i++;
 	}
 	close(fd);
