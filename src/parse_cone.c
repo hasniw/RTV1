@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:50:22 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/08 05:25:18 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/12 01:41:58 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			ft_parse_cone(t_object *obj, int fd)
 		if (ft_count_word(line, ',') == 2 && ft_last_word(line) == ')')
 		{
 			if (ft_assign_what(obj, line, i))
-				free_line(line, 1);
+				return (free_line(line, 1));
 		}
 		ft_strdel(&line);
 		i++;

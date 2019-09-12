@@ -6,20 +6,20 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:10:34 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/11 22:08:37 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/12 02:09:53 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include "rtdata.h"
-#include <fcntl.h> // Open
+#include <fcntl.h>
 #include "libft.h"
-#include <stdio.h> // Juste pour tester
 
-static int	ft_check_node(t_object *chill) //Tcheck si au moins un objet a ete insere
+static int	ft_check_node(t_object *chill)
 {
-	t_object *obj = chill;
+	t_object *obj;
 
+	obj = chill;
 	while (obj->prev)
 		obj = obj->prev;
 	while (obj->next)
@@ -54,10 +54,7 @@ static int	ft_handle_objs(t_object *obj, char *line, int fd)
 	else
 		return (free_last_node(ft_get_head_ref(obj)));
 	if (error)
-	{
-		ft_strdel(&line);
-		return (ft_error("missing object"));
-	}
+		free_line(line, 1);
 	ft_strdel(&line);
 	return (2);
 }
@@ -68,30 +65,24 @@ int			parser(t_fmlx *rtv, char *file)
 	int			x;
 	char		*line;
 	t_object	*obj;
-	int i;
+	int			i;
 
-	i = 0; 
+	i = 0;
 	if ((fd = open(file, 0)) < 0)
 		return (ft_error("Opening file failed."));
-	if (!rtv->obj)
-	{
-		rtv->obj = ft_create_list();
-		obj = rtv->obj;
-	}
+	rtv->obj = ft_create_list();
+	obj = rtv->obj;
 	while (get_next_line(fd, &line) >= 0)
 	{
-		if (i++) // Je cree un maillon en trop
+		if (i++)
 		{
 			ft_list_add_last(&rtv->obj, ft_create_list());
 			while (obj->next)
 				obj = obj->next;
 		}
 		x = ft_handle_objs(obj, line, fd);
-		if (x == 0)
-			return (0);
-		else if (x == 1)
-			return (1);
-		i++;
+		if (x != 2)
+			return (x == 0) ? 0 : 1;
 	}
 	close(fd);
 	return (0);

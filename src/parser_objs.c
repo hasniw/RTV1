@@ -6,21 +6,20 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:23:34 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/08 02:25:51 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/09/12 02:12:10 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include "rtdata.h"
 #include "libft.h"
-#include <stdio.h>
 
-int		ft_parse_name(t_object *obj,  char *line)
+int		ft_parse_name(t_object *obj, char *line)
 {
 	if (ft_strlen(line) > 23)
 		return (1);
 	if (obj->type == RT_CYL)
-		ft_strcat(obj->name, &line[10]);	
+		ft_strcat(obj->name, &line[10]);
 	else if (obj->type == RT_CONE)
 		ft_strcat(obj->name, &line[6]);
 	else if (obj->type == RT_PLANE)
@@ -48,8 +47,6 @@ int		ft_parse_data(t_object *obj, int fd)
 		return (1);
 }
 
-#include <stdio.h>
-
 int		ft_parse_color(t_object *obj, int fd)
 {
 	char *line;
@@ -73,9 +70,7 @@ int		ft_parse_color(t_object *obj, int fd)
 	return (free_line(line, 0));
 }
 
-#include <stdio.h>
-
-int     ft_parse_bracket(int fd, int i)
+int		ft_parse_bracket(int fd, int i)
 {
 	char *line;
 
@@ -94,9 +89,9 @@ int     ft_parse_bracket(int fd, int i)
 	return (free_line(line, 0));
 }
 
-int	    ft_parse_objs(t_object *obj, int fd, int type, char *name)
+int		ft_parse_objs(t_object *obj, int fd, int type, char *name)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	obj->type = type;
